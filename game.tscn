@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b61jewgy1f5no"]
+[gd_scene load_steps=8 format=3 uid="uid://b61jewgy1f5no"]
 
 [ext_resource type="PackedScene" path="res://Player.tscn" id="1_87glj"]
 [ext_resource type="Script" path="res://game.gd" id="1_d7vn3"]
 [ext_resource type="PackedScene" uid="uid://uw5gafl7awww" path="res://alien_group.tscn" id="2_m67mt"]
 [ext_resource type="PackedScene" uid="uid://2lvsd1f17tew" path="res://alien.tscn" id="3_8vpbw"]
 [ext_resource type="PackedScene" uid="uid://bl83dxpptf3qk" path="res://wall.tscn" id="5_qsh0t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4skm"]
+size = Vector2(1600, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmq5h"]
+size = Vector2(40, 800)
 
 [node name="Game" type="Node2D"]
 script = ExtResource( "1_d7vn3" )
@@ -13,24 +19,244 @@ script = ExtResource( "1_d7vn3" )
 position = Vector2(512, 560)
 
 [node name="AlienGroup" parent="." instance=ExtResource( "2_m67mt" )]
-position = Vector2(100, 100)
-
-[node name="Alien" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
-position = Vector2(-23, 33)
-
-[node name="Alien5" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
-position = Vector2(190, 35)
-
-[node name="Alien2" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
-position = Vector2(47, 71)
-
-[node name="Alien3" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
-position = Vector2(99, 33)
+position = Vector2(109, 103)
+speed = 64.0
+acceleration = 10.0
 
 [node name="Alien4" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
-position = Vector2(57, -21)
+position = Vector2(51, 17)
+
+[node name="Alien5" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(275, 17)
+
+[node name="Alien6" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(243, 17)
+
+[node name="Alien7" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(211, 17)
+
+[node name="Alien8" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(179, 17)
+
+[node name="Alien9" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(147, 17)
+
+[node name="Alien10" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(115, 17)
+
+[node name="Alien11" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(83, 17)
+
+[node name="Alien12" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(51, 49)
+
+[node name="Alien13" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(275, 49)
+
+[node name="Alien14" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(243, 49)
+
+[node name="Alien15" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(211, 49)
+
+[node name="Alien16" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(179, 49)
+
+[node name="Alien17" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(147, 49)
+
+[node name="Alien18" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(115, 49)
+
+[node name="Alien19" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(83, 49)
+
+[node name="Alien20" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(51, 81)
+
+[node name="Alien21" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(275, 81)
+
+[node name="Alien22" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(243, 81)
+
+[node name="Alien23" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(211, 81)
+
+[node name="Alien24" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(179, 81)
+
+[node name="Alien25" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(147, 81)
+
+[node name="Alien26" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(115, 81)
+
+[node name="Alien27" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(83, 81)
+
+[node name="Alien28" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(307, 17)
+
+[node name="Alien29" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(531, 17)
+
+[node name="Alien30" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(499, 17)
+
+[node name="Alien31" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(467, 17)
+
+[node name="Alien32" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(435, 17)
+
+[node name="Alien33" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(403, 17)
+
+[node name="Alien34" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(371, 17)
+
+[node name="Alien35" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(339, 17)
+
+[node name="Alien36" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(307, 49)
+
+[node name="Alien37" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(531, 49)
+
+[node name="Alien38" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(499, 49)
+
+[node name="Alien39" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(467, 49)
+
+[node name="Alien40" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(435, 49)
+
+[node name="Alien41" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(403, 49)
+
+[node name="Alien42" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(371, 49)
+
+[node name="Alien43" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(339, 49)
+
+[node name="Alien44" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(307, 81)
+
+[node name="Alien45" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(531, 81)
+
+[node name="Alien46" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(499, 81)
+
+[node name="Alien47" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(467, 81)
+
+[node name="Alien48" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(435, 81)
+
+[node name="Alien49" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(403, 81)
+
+[node name="Alien50" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(371, 81)
+
+[node name="Alien51" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(339, 81)
+
+[node name="Alien52" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(563, 17)
+
+[node name="Alien53" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(787, 17)
+
+[node name="Alien54" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(755, 17)
+
+[node name="Alien55" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(723, 17)
+
+[node name="Alien56" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(691, 17)
+
+[node name="Alien57" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(659, 17)
+
+[node name="Alien58" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(627, 17)
+
+[node name="Alien59" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(595, 17)
+
+[node name="Alien60" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(563, 49)
+
+[node name="Alien61" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(787, 49)
+
+[node name="Alien62" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(755, 49)
+
+[node name="Alien63" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(723, 49)
+
+[node name="Alien64" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(691, 49)
+
+[node name="Alien65" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(659, 49)
+
+[node name="Alien66" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(627, 49)
+
+[node name="Alien67" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(595, 49)
+
+[node name="Alien68" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(563, 81)
+
+[node name="Alien69" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(787, 81)
+
+[node name="Alien70" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(755, 81)
+
+[node name="Alien71" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(723, 81)
+
+[node name="Alien72" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(691, 81)
+
+[node name="Alien73" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(659, 81)
+
+[node name="Alien74" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(627, 81)
+
+[node name="Alien75" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(595, 81)
+
+[node name="TopEdge" parent="." instance=ExtResource( "5_qsh0t" )]
+position = Vector2(512, -100)
+
+[node name="Shape" parent="TopEdge" index="0"]
+shape = SubResource( "RectangleShape2D_b4skm" )
 
 [node name="LeftEdge" parent="." instance=ExtResource( "5_qsh0t" )]
+position = Vector2(0, 300)
+
+[node name="Shape" parent="LeftEdge" index="0"]
+shape = SubResource( "RectangleShape2D_hmq5h" )
 
 [node name="RightEdge" parent="." instance=ExtResource( "5_qsh0t" )]
 position = Vector2(1024, 300)
+
+[node name="Shape" parent="RightEdge" index="0"]
+shape = SubResource( "RectangleShape2D_hmq5h" )
+
+[editable path="TopEdge"]
+[editable path="LeftEdge"]
+[editable path="RightEdge"]

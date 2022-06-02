@@ -1,4 +1,5 @@
-extends Area2D
+extends PlayerBullet
+class_name PlayerBulletWave
 
 var speed = 0.0;
 

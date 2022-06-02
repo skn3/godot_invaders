@@ -1,4 +1,5 @@
-extends Area2D
+extends PlayerBullet
+class_name PlayerBulletBeam
 
 var speed = 0.0;
 

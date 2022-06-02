@@ -29,6 +29,31 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://player.gd"
 }, {
+"base": "Node2D",
+"class": &"PlayerBullet",
+"language": &"GDScript",
+"path": "res://player_bullet.gd"
+}, {
+"base": "PlayerBullet",
+"class": &"PlayerBulletBasic",
+"language": &"GDScript",
+"path": "res://bullets/player_bullet_basic.gd"
+}, {
+"base": "PlayerBullet",
+"class": &"PlayerBulletBeam",
+"language": &"GDScript",
+"path": "res://bullets/player_bullet_beam.gd"
+}, {
+"base": "PlayerBullet",
+"class": &"PlayerBulletPlasma",
+"language": &"GDScript",
+"path": "res://bullets/player_bullet_plasma.gd"
+}, {
+"base": "PlayerBullet",
+"class": &"PlayerBulletWave",
+"language": &"GDScript",
+"path": "res://bullets/player_bullet_wave.gd"
+}, {
 "base": "Area2D",
 "class": &"Wall",
 "language": &"GDScript",
@@ -39,12 +64,17 @@ _global_script_class_icons={
 "AlienGroup": "",
 "Gun": "",
 "Player": "",
+"PlayerBullet": "",
+"PlayerBulletBasic": "",
+"PlayerBulletBeam": "",
+"PlayerBulletPlasma": "",
+"PlayerBulletWave": "",
 "Wall": ""
 }
 
 [application]
 
-config/name="Space Invaders"
+config/name="Godot Invaders"
 run/main_scene="res://game.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")

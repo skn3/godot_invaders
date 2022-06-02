@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4hcog5mvs2it"]
+[gd_scene load_steps=8 format=3 uid="uid://djrpna3602qdk"]
 
 [ext_resource type="Texture2D" uid="uid://cx1d4lhpmhq53" path="res://graphics/beam.png" id="1_emx1h"]
-[ext_resource type="Script" path="res://bullet_beam.gd" id="1_maguj"]
+[ext_resource type="Script" path="res://bullets/player_bullet_beam.gd" id="1_maguj"]
+[ext_resource type="PackedScene" uid="uid://cd0q2wha638g4" path="res://player_bullet.tscn" id="1_nvykn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_at8es"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di3rs"]
 size = Vector2(10, 600)
 
 [sub_resource type="Animation" id="Animation_ydc8j"]
@@ -79,10 +80,10 @@ tracks/2/path = NodePath(".:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7, 0.793444),
-"transitions": PackedFloat32Array(0.353553, 0.757858, 1),
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.353553, 0.757858, 0.233258),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.4, 1), Vector2(0.4, 1)]
+"values": [Vector2(1, 1), Vector2(2.4, 1), Vector2(0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o2uli"]
@@ -91,24 +92,22 @@ _data = {
 "RESET": SubResource( "Animation_ydc8j" )
 }
 
-[node name="BulletBeam" type="Area2D"]
-modulate = Color(2, 2, 2, 1)
-scale = Vector2(0.4, 1)
+[node name="PlayerBulletBeam" instance=ExtResource( "1_nvykn" )]
 script = ExtResource( "1_maguj" )
+destroyOnContact = false
 
-[node name="Graphics" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-texture_filter = 1
+[node name="Graphics" parent="." index="0"]
+modulate = Color(0, 1, 1, 1)
 position = Vector2(0, -300)
 scale = Vector2(1, 600)
 texture = ExtResource( "1_emx1h" )
 
-[node name="Shape" type="CollisionShape2D" parent="."]
+[node name="Shape" parent="." index="1"]
 visible = false
 position = Vector2(0, -300)
-shape = SubResource( "RectangleShape2D_at8es" )
+shape = SubResource( "RectangleShape2D_di3rs" )
 
-[node name="Animation" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="." index="2"]
 autoplay = "Default"
 libraries = {
 "": SubResource( "AnimationLibrary_o2uli" )

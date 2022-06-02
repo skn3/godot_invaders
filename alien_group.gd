@@ -2,8 +2,6 @@
 extends Node2D
 class_name AlienGroup
 
-const Wall = preload("res://wall.gd")
-
 @export var speed = 128.0;
 @export var rowHeight = 32;
 @export var acceleration = 32.0;
@@ -20,7 +18,7 @@ func _ready():
 	#this allows us to setup a group in the editor!
 	lock();
 	for child in get_children():
-		if child is Alien:
+		if child.is_in_group("alien"):
 			addAlien(child);
 			
 	unlock();
@@ -33,7 +31,7 @@ func _physics_process(delta):
 		position += direction * speed * delta;
 		
 func _on_alien_group_area_entered(area):
-	if area is Wall:
+	if area.is_in_group("wall"):
 		direction = direction * -1;
 		speed += acceleration;
 		position.y += rowHeight
@@ -51,7 +49,10 @@ func calculateBounds():
 		#calculate all children
 		boundsRect = Rect2();
 		for alien in aliens:
-			boundsRect = boundsRect.merge(alien.getBounds(alien.position));
+			if boundsRect.has_no_area():
+				boundsRect = alien.getBounds(alien.position);
+			else:
+				boundsRect = boundsRect.merge(alien.getBounds(alien.position));
 			
 		#var position = Vector2(boundsRect.position.x+boundsRect.size.x/2, boundsRect.position.y+boundsRect.size.y/2);
 		var position = boundsRect.position;
@@ -60,8 +61,6 @@ func calculateBounds():
 		#apply to collision shape
 		$CollisionRect.position = position + size / 2;
 		$CollisionRect.shape.size = size;
-		
-		CollisionShape2D
 		
 		#apply to editor rect
 		$EditorRect.position = position;
@@ -81,7 +80,17 @@ func unlock():
 			calculateBounds();
 	
 func addAlien(alien):
+	alien.group = self;
 	aliens.append(alien);
+	
+	if alien.get_parent() == null:
+		add_child(alien);
+		
 	calculateBounds();
 
-
+func removeAlien(alien):
+	alien.group = null;
+	aliens.erase(alien);
+	
+	call_deferred("remove_child", alien)
+	calculateBounds();

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://alien_group.gd" id="1_f741y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6aqbx"]
-size = Vector2(233, 112)
+size = Vector2(0, 0)
 
 [node name="AlienGroup" type="Area2D"]
 position = Vector2(15159.3, 0)

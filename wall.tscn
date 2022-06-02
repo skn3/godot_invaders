@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" path="res://wall.gd" id="1_i4jba"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wespx"]
-size = Vector2(100, 600)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhhi6"]
 
-[node name="Wall" type="Area2D"]
-position = Vector2(0, 300)
+[node name="Wall" type="Area2D" groups=["wall"]]
 collision_mask = 0
 monitoring = false
 script = ExtResource( "1_i4jba" )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource( "RectangleShape2D_wespx" )
+shape = SubResource( "RectangleShape2D_uhhi6" )

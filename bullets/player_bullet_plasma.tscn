@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://74i36h7ax6tw"]
+
+[ext_resource type="PackedScene" uid="uid://cd0q2wha638g4" path="res://player_bullet.tscn" id="1_jl64d"]
+[ext_resource type="Script" path="res://bullets/player_bullet_plasma.gd" id="2_cv3si"]
+[ext_resource type="Texture2D" uid="uid://ttmf3wo2ufqk" path="res://graphics/plasma.png" id="2_m6dj1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2wrgs"]
+radius = 4.0
+height = 12.0
+
+[node name="PlayerBulletPlasma" instance=ExtResource( "1_jl64d" )]
+modulate = Color(1, 0.741176, 0, 1)
+script = ExtResource( "2_cv3si" )
+
+[node name="Shape" parent="." index="0"]
+shape = SubResource( "CapsuleShape2D_2wrgs" )
+
+[node name="Graphics" parent="." index="1"]
+texture = ExtResource( "2_m6dj1" )
