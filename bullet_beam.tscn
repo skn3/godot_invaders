@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4hcog5mvs2it"]
+
+[ext_resource type="Texture2D" uid="uid://cx1d4lhpmhq53" path="res://graphics/beam.png" id="1_emx1h"]
+[ext_resource type="Script" path="res://bullet_beam.gd" id="1_maguj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at8es"]
+size = Vector2(10, 600)
+
+[sub_resource type="Animation" id="Animation_ydc8j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fy7go"]
+resource_name = "Default"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(2.82843, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(2, 2, 2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(18.3792, 1, 1),
+"update": 0,
+"values": [Color(0, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.793444),
+"transitions": PackedFloat32Array(0.353553, 0.757858, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1), Vector2(0.4, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2uli"]
+_data = {
+"Default": SubResource( "Animation_fy7go" ),
+"RESET": SubResource( "Animation_ydc8j" )
+}
+
+[node name="BulletBeam" type="Area2D"]
+modulate = Color(2, 2, 2, 1)
+scale = Vector2(0.4, 1)
+script = ExtResource( "1_maguj" )
+
+[node name="Graphics" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+position = Vector2(0, -300)
+scale = Vector2(1, 600)
+texture = ExtResource( "1_emx1h" )
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -300)
+shape = SubResource( "RectangleShape2D_at8es" )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "Default"
+libraries = {
+"": SubResource( "AnimationLibrary_o2uli" )
+}
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

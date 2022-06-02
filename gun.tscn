@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpn6qhmsyv1ju"]
+
+[ext_resource type="Script" path="res://gun.gd" id="1_r4dib"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource( "1_r4dib" )
+bulletSpeed = 700
+pointRefs = []

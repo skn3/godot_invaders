@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=3 uid="uid://c51plmpytk4u5"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_1wlqs"]
+[ext_resource type="PackedScene" uid="uid://b8tvflsn1q6r2" path="res://pixel_progress_bar.tscn" id="2_gd511"]
+[ext_resource type="Texture2D" uid="uid://c8jkbtxtgrwbx" path="res://graphics/player_gun2.png" id="2_t5gdv"]
+[ext_resource type="Texture2D" uid="uid://bts48dqe7lbnx" path="res://graphics/player_gun1.png" id="3_fnhho"]
+[ext_resource type="Texture2D" uid="uid://c5x1xoen2ebmw" path="res://graphics/player_gun3.png" id="4_7410m"]
+[ext_resource type="Texture2D" uid="uid://bt1up6loy3hcu" path="res://graphics/player_gun4.png" id="5_jclvu"]
+[ext_resource type="PackedScene" uid="uid://bgo8wvvl2l21f" path="res://bullet_basic.tscn" id="8_vta4w"]
+[ext_resource type="PackedScene" uid="uid://bpn6qhmsyv1ju" path="res://gun.tscn" id="9_rw40v"]
+[ext_resource type="PackedScene" uid="uid://c4hcog5mvs2it" path="res://bullet_beam.tscn" id="10_5ej82"]
+[ext_resource type="PackedScene" uid="uid://cb0hlp7jmhmij" path="res://bullet_plasma.tscn" id="10_w48er"]
+[ext_resource type="PackedScene" uid="uid://croxuhtxw3ea4" path="res://bullet_wave.tscn" id="12_52nyv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2q4gn"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbyig"]
+animations = [{
+"frames": [ExtResource( "5_jclvu" )],
+"loop": true,
+"name": &"gun4",
+"speed": 5.0
+}, {
+"frames": [ExtResource( "2_t5gdv" )],
+"loop": true,
+"name": &"gun2",
+"speed": 5.0
+}, {
+"frames": [ExtResource( "3_fnhho" )],
+"loop": true,
+"name": &"gun1",
+"speed": 5.0
+}, {
+"frames": [ExtResource( "4_7410m" )],
+"loop": true,
+"name": &"gun3",
+"speed": 5.0
+}]
+
+[node name="Player" type="Area2D"]
+texture_filter = 1
+texture_repeat = 1
+collision_layer = 2
+collision_mask = 25
+script = ExtResource( "1_1wlqs" )
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+rotation = 1.5708
+shape = SubResource( "CapsuleShape2D_2q4gn" )
+
+[node name="ReloadProgress" parent="." instance=ExtResource( "2_gd511" )]
+offset_left = -16.0
+offset_top = 2.0
+offset_right = 16.0
+offset_bottom = 8.0
+
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
+frames = SubResource( "SpriteFrames_lbyig" )
+animation = &"gun1"
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GunBasic" parent="." instance=ExtResource( "9_rw40v" )]
+visible = false
+playerAnimation = "gun1"
+reloadTime = 0.1
+automatic = true
+bulletScene = ExtResource( "8_vta4w" )
+pointRefs = [NodePath("Point1")]
+
+[node name="Point1" type="Position2D" parent="GunBasic"]
+position = Vector2(0, -21)
+
+[node name="GunSplit" parent="." instance=ExtResource( "9_rw40v" )]
+visible = false
+playerAnimation = "gun2"
+bulletSpeed = 300
+automatic = true
+bulletScene = ExtResource( "10_w48er" )
+pointRefs = [NodePath("Point1"), NodePath("Point2")]
+
+[node name="Point1" type="Position2D" parent="GunSplit"]
+position = Vector2(-5, -20)
+rotation = -0.0872665
+
+[node name="Point2" type="Position2D" parent="GunSplit"]
+position = Vector2(5, -20)
+rotation = 0.0872665
+
+[node name="GunWave" parent="." instance=ExtResource( "9_rw40v" )]
+visible = false
+playerAnimation = "gun3"
+reloadTime = 0.4
+bulletSpeed = 500
+automatic = true
+bulletScene = ExtResource( "12_52nyv" )
+pointRefs = [NodePath("Point1")]
+
+[node name="Point1" type="Position2D" parent="GunWave"]
+position = Vector2(0, -17)
+
+[node name="GunBeam" parent="." instance=ExtResource( "9_rw40v" )]
+attachToPlayer = true
+playerAnimation = "gun4"
+reloadTime = 1.0
+bulletSpeed = 0
+bulletScene = ExtResource( "10_5ej82" )
+pointRefs = [NodePath("Point1")]
+
+[node name="Point1" type="Position2D" parent="GunBeam"]
+position = Vector2(0, -21)
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_fire_timer_timeout"]

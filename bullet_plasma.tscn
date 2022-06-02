@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb0hlp7jmhmij"]
+
+[ext_resource type="Script" path="res://bullet_plasma.gd" id="1_ih3kb"]
+[ext_resource type="Texture2D" uid="uid://ttmf3wo2ufqk" path="res://graphics/plasma.png" id="2_iqw1v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mu6ne"]
+radius = 4.0
+height = 14.0
+
+[node name="Bullet" type="Area2D"]
+modulate = Color(1, 0.776471, 0, 1)
+texture_filter = 1
+script = ExtResource( "1_ih3kb" )
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource( "CapsuleShape2D_mu6ne" )
+
+[node name="Graphics" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource( "2_iqw1v" )
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.5, 0.7)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_exited_screen"]

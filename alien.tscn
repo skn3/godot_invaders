@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://2lvsd1f17tew"]
+
+[ext_resource type="Script" path="res://alien.gd" id="1_ak74e"]
+[ext_resource type="Texture2D" uid="uid://cgqd7ugccusx2" path="res://graphics/alien_crabble.png" id="1_yq8ll"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbj7y"]
+animations = [{
+"frames": [ExtResource( "1_yq8ll" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6sl0c"]
+
+[node name="Alien" type="Area2D"]
+modulate = Color(0.509804, 1, 0, 1)
+collision_layer = 8
+collision_mask = 16
+monitoring = false
+script = ExtResource( "1_ak74e" )
+
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+frames = SubResource( "SpriteFrames_qbj7y" )
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource( "CircleShape2D_6sl0c" )
+
+[connection signal="area_entered" from="." to="." method="_on_alien_area_entered"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b61jewgy1f5no"]
+
+[ext_resource type="PackedScene" path="res://Player.tscn" id="1_87glj"]
+[ext_resource type="Script" path="res://game.gd" id="1_d7vn3"]
+[ext_resource type="PackedScene" uid="uid://uw5gafl7awww" path="res://alien_group.tscn" id="2_m67mt"]
+[ext_resource type="PackedScene" uid="uid://2lvsd1f17tew" path="res://alien.tscn" id="3_8vpbw"]
+[ext_resource type="PackedScene" uid="uid://bl83dxpptf3qk" path="res://wall.tscn" id="5_qsh0t"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( "1_d7vn3" )
+
+[node name="Player" parent="." instance=ExtResource( "1_87glj" )]
+position = Vector2(512, 560)
+
+[node name="AlienGroup" parent="." instance=ExtResource( "2_m67mt" )]
+position = Vector2(100, 100)
+
+[node name="Alien" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(-23, 33)
+
+[node name="Alien5" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(190, 35)
+
+[node name="Alien2" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(47, 71)
+
+[node name="Alien3" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(99, 33)
+
+[node name="Alien4" parent="AlienGroup" instance=ExtResource( "3_8vpbw" )]
+position = Vector2(57, -21)
+
+[node name="LeftEdge" parent="." instance=ExtResource( "5_qsh0t" )]
+
+[node name="RightEdge" parent="." instance=ExtResource( "5_qsh0t" )]
+position = Vector2(1024, 300)

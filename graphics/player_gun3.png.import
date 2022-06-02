@@ -1,0 +1,22 @@
+[remap]
+
+importer="texture_atlas"
+type="CompressedTexture2D"
+uid="uid://c5x1xoen2ebmw"
+path="res://.godot/imported/player_gun3.png-0f9cdac1b44c4e26ebe27146854c9c50.ctex"
+metadata={
+"vram_texture": false
+}
+group_file=""
+
+[deps]
+
+source_file="res://graphics/player_gun3.png"
+dest_files=["res://.godot/imported/player_gun3.png-0f9cdac1b44c4e26ebe27146854c9c50.ctex"]
+
+[params]
+
+atlas_file=""
+import_mode=0
+crop_to_region=false
+trim_alpha_border_from_region=true

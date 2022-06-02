@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://uw5gafl7awww"]
+
+[ext_resource type="Script" path="res://alien_group.gd" id="1_f741y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6aqbx"]
+size = Vector2(233, 112)
+
+[node name="AlienGroup" type="Area2D"]
+position = Vector2(15159.3, 0)
+collision_layer = 4
+monitorable = false
+script = ExtResource( "1_f741y" )
+speed = 256.0
+
+[node name="CollisionRect" type="CollisionShape2D" parent="."]
+shape = SubResource( "RectangleShape2D_6aqbx" )
+
+[node name="EditorRect" type="ReferenceRect" parent="."]
+editor_only = false
+
+[connection signal="area_entered" from="." to="." method="_on_alien_group_area_entered"]
