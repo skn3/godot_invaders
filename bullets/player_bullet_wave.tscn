@@ -4,18 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://cd0q2wha638g4" path="res://player_bullet.tscn" id="1_qirpk"]
 [ext_resource type="Texture2D" uid="uid://b42la88hk2gok" path="res://graphics/wave.png" id="2_dv0jf"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lx26r"]
-radius = 6.0
-height = 44.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7qvk"]
+radius = 5.0
+height = 40.0
 
 [node name="PlayerBulletWave" instance=ExtResource( "1_qirpk" )]
 script = ExtResource( "1_g22fr" )
-destroyOnContact = false
 
-[node name="Graphics" parent="." index="0"]
+[node name="Graphics" type="Sprite2D" parent="." index="0"]
+texture_filter = 1
 texture = ExtResource( "2_dv0jf" )
 
-[node name="Shape" parent="." index="1"]
+[node name="Shape" type="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -5)
 rotation = 1.5708
-shape = SubResource( "CapsuleShape2D_lx26r" )
+shape = SubResource( "CapsuleShape2D_d7qvk" )

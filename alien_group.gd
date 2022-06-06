@@ -65,6 +65,11 @@ func calculateBounds():
 		#apply to editor rect
 		$EditorRect.position = position;
 		$EditorRect.size = size;
+		
+#alien events
+func _on_alien_destroyed(alien) -> void:
+	print("alien destroyed");
+	removeAlien(alien);
 
 #api
 func lock():
@@ -80,17 +85,28 @@ func unlock():
 			calculateBounds();
 	
 func addAlien(alien):
-	alien.group = self;
+	#register to here signals from this alien
+	alien.connect("alien_destroyed", self._on_alien_destroyed)
+	
+	#add to lookup
 	aliens.append(alien);
 	
-	if alien.get_parent() == null:
-		add_child(alien);
+	#remove from previous parent
+	if alien.get_parent() != null:
+		alien.get_parent().remove_child(alien);
 		
+	#attach to this group
+	add_child(alien);
+	
+	#recalculate the bounds of the group
 	calculateBounds();
 
 func removeAlien(alien):
-	alien.group = null;
+	#remove from lookup
 	aliens.erase(alien);
 	
-	call_deferred("remove_child", alien)
+	#remove from the group
+	remove_child(alien);
+	
+	#recalculate the bounds
 	calculateBounds();

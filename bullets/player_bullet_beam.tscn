@@ -1,50 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://djrpna3602qdk"]
+[gd_scene load_steps=11 format=3 uid="uid://djrpna3602qdk"]
 
 [ext_resource type="Texture2D" uid="uid://cx1d4lhpmhq53" path="res://graphics/beam.png" id="1_emx1h"]
 [ext_resource type="Script" path="res://bullets/player_bullet_beam.gd" id="1_maguj"]
 [ext_resource type="PackedScene" uid="uid://cd0q2wha638g4" path="res://player_bullet.tscn" id="1_nvykn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_di3rs"]
-size = Vector2(10, 600)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n74hb"]
+size = Vector2(10, 1)
 
-[sub_resource type="Animation" id="Animation_ydc8j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Graphics:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
+[sub_resource type="Curve" id="Curve_tj54n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.082929, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6gfrx"]
+curve = SubResource( "Curve_tj54n" )
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_qsi85"]
+lifetime_randomness = 0.8
+emission_shape = 3
+emission_box_extents = Vector3(7, 0, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 30.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 75.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_min = 10.0
+radial_accel_max = 60.0
+angle_min = -40.0
+angle_max = 40.0
+scale_min = 4.0
+scale_max = 5.0
+scale_curve = SubResource( "CurveTexture_6gfrx" )
 
 [sub_resource type="Animation" id="Animation_fy7go"]
 resource_name = "Default"
@@ -76,14 +66,53 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
+tracks/2/path = NodePath("Graphics:scale:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8),
-"transitions": PackedFloat32Array(0.353553, 0.757858, 0.233258),
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(2.4, 1), Vector2(0, 1)]
+"values": [1.0, 2.4, 0.1]
+}
+
+[sub_resource type="Animation" id="Animation_ydc8j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphics:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o2uli"]
@@ -94,23 +123,35 @@ _data = {
 
 [node name="PlayerBulletBeam" instance=ExtResource( "1_nvykn" )]
 script = ExtResource( "1_maguj" )
-destroyOnContact = false
 
-[node name="Graphics" parent="." index="0"]
+[node name="Shape" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource( "RectangleShape2D_n74hb" )
+
+[node name="WallParticles" type="GPUParticles2D" parent="." index="1"]
 modulate = Color(0, 1, 1, 1)
-position = Vector2(0, -300)
-scale = Vector2(1, 600)
+emitting = false
+amount = 100
+lifetime = 4.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( "ParticlesMaterial_qsi85" )
+
+[node name="Graphics" type="Sprite2D" parent="." index="2"]
+modulate = Color(0, 1, 1, 1)
+texture_filter = 1
 texture = ExtResource( "1_emx1h" )
+offset = Vector2(0, -0.5)
 
-[node name="Shape" parent="." index="1"]
-visible = false
-position = Vector2(0, -300)
-shape = SubResource( "RectangleShape2D_di3rs" )
-
-[node name="Animation" type="AnimationPlayer" parent="." index="2"]
+[node name="Animation" type="AnimationPlayer" parent="." index="3"]
 autoplay = "Default"
 libraries = {
 "": SubResource( "AnimationLibrary_o2uli" )
 }
 
-[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
+[node name="DetectWall" type="RayCast2D" parent="." index="4"]
+visible = false
+target_position = Vector2(0, -1000)
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]

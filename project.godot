@@ -9,10 +9,15 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "Node2D",
+"base": "Area2D",
 "class": &"Alien",
 "language": &"GDScript",
 "path": "res://alien.gd"
+}, {
+"base": "Alien",
+"class": &"AlienBasic",
+"language": &"GDScript",
+"path": "res://aliens/alien_basic.gd"
 }, {
 "base": "Node2D",
 "class": &"AlienGroup",
@@ -61,6 +66,7 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "Alien": "",
+"AlienBasic": "",
 "AlienGroup": "",
 "Gun": "",
 "Player": "",

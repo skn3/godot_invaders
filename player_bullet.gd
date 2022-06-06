@@ -1,16 +1,19 @@
 extends Node2D
 class_name PlayerBullet
 
-@export var destroyOnContact = true;
+@export var damage = 1.0;
+@export var life = 0.0;
 
-#events
+#godot events
 func _ready():
 	pass;
 
 func _process(delta):
 	pass;
 
-
-func _on_player_bullet_area_entered(area):
-	if area.is_class("Wall"):
-		get_parent().remove_child(self);
+#events
+func _on_shape_entered_area(area):
+	#wall, ignore wall collisions if life is lower then 0
+	#this allows for bullets that dont destroy
+	if life > 0.0 and area.is_in_group("wall"):
+			get_parent().remove_child(self);

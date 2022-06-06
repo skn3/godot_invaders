@@ -22,14 +22,14 @@ animations = [{
 "name": &"gun4",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "4_7410m" )],
-"loop": true,
-"name": &"gun3",
-"speed": 5.0
-}, {
 "frames": [ExtResource( "2_t5gdv" )],
 "loop": true,
 "name": &"gun2",
+"speed": 5.0
+}, {
+"frames": [ExtResource( "4_7410m" )],
+"loop": true,
+"name": &"gun3",
 "speed": 5.0
 }, {
 "frames": [ExtResource( "3_fnhho" )],
@@ -67,7 +67,7 @@ one_shot = true
 [node name="GunBasic" parent="." instance=ExtResource( "9_rw40v" )]
 visible = false
 playerAnimation = "gun1"
-reloadTime = 0.1
+bulletSpeed = 650
 automatic = true
 bulletScene = ExtResource( "8_vta4w" )
 pointRefs = [NodePath("Point1")]

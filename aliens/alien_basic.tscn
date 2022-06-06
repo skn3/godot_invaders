@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dac5aqaxuy2jg"]
+
+[ext_resource type="PackedScene" uid="uid://cdt8t466wjb1g" path="res://alien.tscn" id="1_h61pe"]
+[ext_resource type="Texture2D" uid="uid://cgqd7ugccusx2" path="res://graphics/alien_crabble.png" id="2_qsri0"]
+[ext_resource type="Script" path="res://aliens/alien_basic.gd" id="2_sxeqx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_68elg"]
+animations = [{
+"frames": [ExtResource( "2_qsri0" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3s5t3"]
+radius = 9.0
+
+[node name="AlienBasic" instance=ExtResource( "1_h61pe" )]
+script = ExtResource( "2_sxeqx" )
+health = 2.0
+
+[node name="Graphics" parent="." index="0"]
+texture_filter = 1
+frames = SubResource( "SpriteFrames_68elg" )
+
+[node name="Shape" parent="." index="1"]
+shape = SubResource( "CircleShape2D_3s5t3" )
+
+[connection signal="area_entered" from="." to="." method="_on_shape_entered"]

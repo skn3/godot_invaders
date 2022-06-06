@@ -1,9 +1,8 @@
-extends Area2D
-class_name Wall
+extends Alien
+class_name AlienBasic
 
 func _ready():
 	pass
 
 func _process(delta):
 	pass
-

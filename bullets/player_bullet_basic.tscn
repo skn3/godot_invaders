@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://csjevrlqt4df"]
+[gd_scene load_steps=5 format=3 uid="uid://csjevrlqt4df"]
 
 [ext_resource type="PackedScene" uid="uid://cd0q2wha638g4" path="res://player_bullet.tscn" id="1_sb0cv"]
 [ext_resource type="Script" path="res://bullets/player_bullet_basic.gd" id="2_gubuy"]
 [ext_resource type="Texture2D" uid="uid://dqvo47sqd2aen" path="res://graphics/bullet1.png" id="2_s8hrt"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vg1so"]
+radius = 3.0
+
 [node name="PlayerBulletBasic" instance=ExtResource( "1_sb0cv" )]
 script = ExtResource( "2_gubuy" )
+life = 1.0
 
-[node name="Graphics" parent="." index="0"]
+[node name="Graphics" type="Sprite2D" parent="." index="0"]
+texture_filter = 1
 texture = ExtResource( "2_s8hrt" )
+
+[node name="Shape" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource( "CircleShape2D_vg1so" )
